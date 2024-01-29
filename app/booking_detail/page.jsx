@@ -14,10 +14,10 @@ const BookingDetail = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   const stepComponents = [
-    <PersonalizeOptions />,
-    <SpecialRequest />,
-    <GuestDetails />,
-    <LoginForm />,
+    <PersonalizeOptions key={0}/>,
+    <SpecialRequest key={1}/>,
+    <GuestDetails key={2}/>,
+    <LoginForm key={3}/>,
   ];
 
   return (

@@ -44,7 +44,9 @@ const PricebarMenu = () => {
             <div className="bg-white w-full">
               <h4 className="text-sm ">{tourData.tour_title}</h4>
               <span className="text-xs text-accent">
-                {tourData.tour_start_date} // {tourData.tour_end_date}
+                {`
+                 ${tourData.tour_start_date} // ${tourData.tour_end_date}
+                `}
               </span>
               <br />
               <span className="text-xs text-accent">
