@@ -46,7 +46,7 @@ const LoginForm = () => {
           </button>
         </form>
         <span>
-          Don't have an account?
+          Don&apos;t have an account?
           <a
             href="user_signUp.html"
             className="text-primary"
@@ -55,7 +55,7 @@ const LoginForm = () => {
           </a>
         </span>
         <span>
-          Don't have an agente account?
+          Don&apos;t have an agente account?
           <a
             href="agent_signUp.html"
             className="text-primary"

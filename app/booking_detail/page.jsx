@@ -3,7 +3,6 @@
 import { React, useState } from "react";
 import Stepper from "@components/ui/Stepper";
 import SpecialRequest from "./SpecialRequests";
-import tourData from "../../dummy_tour_id.json";
 import GuestDetails from "./GuestDetails";
 import LoginForm from "@components/forms/LoginForm";
 import PricebarMenuRoot from "@components/ui/Pricebar/PricebarMenuRoot";
@@ -11,12 +10,8 @@ import PersonalizeOptions from "./PersonalizeOptions";
 import TourInfoHeader from "./TourInfoHeader";
 import TourInfoSub from "./TourInfoSub";
 
-
-
-const booking_detail = () => {
+const BookingDetail = () => {
   const [activeStep, setActiveStep] = useState(0);
-
-
 
   const stepComponents = [
     <PersonalizeOptions />,
@@ -52,4 +47,4 @@ const booking_detail = () => {
   );
 };
 
-export default booking_detail;
+export default BookingDetail;

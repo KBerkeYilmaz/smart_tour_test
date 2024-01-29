@@ -5,7 +5,7 @@ const LandingContactForm = () => {
       >
         <div className="py-[40px] px-[1.87rem] flex flex-col gap-[8px] w-full">
           <h3 className="pb-[0.9rem] font-bold text-[35px] text-center">
-            We'll reply in less than 24hrs. Contact us Now!
+            We&apos;ll reply in less than 24hrs. Contact us Now!
           </h3>
           <form action="">
             <div

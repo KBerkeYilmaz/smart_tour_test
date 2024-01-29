@@ -11,7 +11,7 @@ import SideBarMenuRoot from "@components/ui/Sidebar/SidebarMenuRoot";
 import tourData from "../../dummy_tour_id.json";
 
 
-const package_detail = ({ params: { locale } }) => {
+const PackageDetail = ({ params: { locale } }) => {
   const [selectedOption, setSelectedOption] = useState("overview");
 
   const handleOptionChange = (option) => {
@@ -111,4 +111,4 @@ const package_detail = ({ params: { locale } }) => {
   );
 };
 
-export default package_detail;
+export default PackageDetail;
