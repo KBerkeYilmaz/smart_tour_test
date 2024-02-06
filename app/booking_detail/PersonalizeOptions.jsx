@@ -1,6 +1,6 @@
 import OptionalsList from "./OptionalsList";
 import InsuranceList from "./InsuranceList";
-import tourData from "../../dummy_tour_id.json";
+import tourData from "../../../dummy_tour_id.json";
 
 const PersonalizeOptions = () => {
   return (

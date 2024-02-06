@@ -1,67 +1,17 @@
 "use client";
-
+import Link from "next/link";
 import { useState, useEffect } from "react";
+import Checkbox from "@mui/material/Checkbox";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useRouter } from "next/navigation";
 
-// async function fetchData() {
-//   try {
-//     const response = await fetch('https://www.gokamind.com/MedusaTurApi/all_tour', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxIiwiZmlyc3RfbmFtZSI6IkVyZW4gS2FcdTAxMWZhbiIsImxhc3RfbmFtZSI6IkF5ZFx1MDEzMW4iLCJlbWFpbCI6ImVyZW5rYWdhbmF5ZGluQGdtYWlsLmNvbSIsInJvbGVfaWQiOiIxIiwic3RhdHVzIjp0cnVlLCJBUElfVElNRSI6MTcwNTgxNDg0N30.uRkTjxUDiB0if-PiwVqunAbESdJcIUmmia2gZXkn_EQ,
-//         'Accept-Language': 'turkish,tr'
+import { toast } from "react-hot-toast";
 
-//       },
-//       // If you need to send data in the POST request, add a body property here
-//       // body: JSON.stringify({ key: 'value' }),
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-//     const data = await response.json();
-//     console.log(data);
-//   } catch (error) {
-//     console.error('Fetch error:', error);
-//   }
-// }
-
-// fetchData();
-// fetch('https://esacambalkon.com/asdasd.php')
-// .then(res => res.json())
-// .then(console.log);
-
-// var myHeaders = new Headers();
-// myHeaders.append("Content-Type", "application/json");
-// myHeaders.append("Accept-Language", "turkish,tr");
-
-// // // myHeaders.append("Cookie", "ci_session=49779c9c6ce5853f0e2271a74fa97dc42fd87c27");
-
-// const raw = JSON.stringify({
-//   first_name: "Foo",
-//   last_name: "Bar",
-//   email: "test_frontend6@gmail.com",
-//   phone_number: "9055122096236s",
-//   password: "123456",
-//   role: "3",
-// });
-
-// const requestOptions = {
-//   method: "POST",
-//   headers: myHeaders,
-//   mode: "no-cors", // bu kısım
-//   body: raw,
-//   redirect: "follow",
-// };
-
-// fetch("https://www.gokamind.com/MedusaTurApi/register", requestOptions)
-//   .then((response) => response.text())
-//   .then((result) => console.log(result))
-//   .catch((error) => console.log("error", error));
-
-const SignupForm = ({ rawData }) => {
+const SignupForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isTermsChecked, setIsTermsChecked] = useState(false);
+  const router = useRouter();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -75,65 +25,59 @@ const SignupForm = ({ rawData }) => {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleTermsChange = (e) => {
+    setIsTermsChecked(e.target.checked);
+  };
 
   // Form submission
 
   async function onSubmit(event) {
     event.preventDefault();
-    // setIsLoading(true);
-    // setError(null);
+    setIsLoading(true);
+    setError(null);
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Accept-Language", "turkish,tr");
+    const requestBody = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone_number: phoneNumber,
+      password: password,
+      role: "3", // Default role set to "3"
+    };
 
-    // Setup headers and form data
-    // const raw = JSON.stringify({
-    //   first_name: firstName,
-    //   last_name: lastName,
-    //   email: email,
-    //   phone_number: phoneNumber,
-    //   password: password,
-    //   role: "3",
-    // });
-    // const raw = JSON.stringify({
-    //   first_name: "Foo",
-    //   last_name: "Barz",
-    //   email: "test_frontend6@gmail.com",
-    //   phone_number: "9055122096226",
-    //   password: "123456",
-    //   role: "3",
-    // });
+    try {
+      const response = await fetch(
+        "https://www.gokamind.com/MedusaTurApi/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Include other headers if necessary
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
 
-    // console.log(raw);
+      const data = await response.json();
 
-    // const requestOptions = {
-    //   method: "POST",
-    //   headers: myHeaders,
-    //   mode: "no-cors", // bu kısım
-    //   body: raw,
-    //   redirect: "follow",
-    // };
+      if (!response.ok) {
+        throw new Error(
+          data.message || `HTTP error! Status: ${response.status}`
+        );
+      }
 
-    // console.log(requestOptions);
+      console.log(data); // Process the response data as needed
+      toast.success("Registration successful!"); // Display success toast
+      router.push("/sign_in");
 
-    // fetch("https://www.gokamind.com/MedusaTurApi/register", requestOptions)
-    //   .then((response) => response.text())
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log("error", error));
-
-    // const requestOptions = {
-    //   method: "POST",
-    //   headers: myHeaders,
-    //   mode: "no-cors", // bu kısım
-    //   body: raw,
-    //   redirect: "follow",
-    // };
-
-    // fetch("https://www.gokamind.com/MedusaTurApi/register", requestOptions)
-    //   .then((response) => response.text())
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log("error", error));
+      // Additional success logic here, e.g., redirecting the user or updating the state
+    } catch (error) {
+      console.error("Fetch error:", error);
+      setError(error.message || "An error occurred");
+      toast.error(error.message || "Registration failed!"); // Display error toast
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -143,8 +87,6 @@ const SignupForm = ({ rawData }) => {
     >
       <div className="py-[6%] px-[1.87rem] flex flex-col gap-[8px] w-full">
         <h3 className="pb-[0.9rem] font-bold text-[35px] text-left">Sign Up</h3>
-        {error && <div style={{ color: "red" }}>{error}</div>}
-
         <form
           id={"signup-form"}
           onSubmit={onSubmit}
@@ -159,6 +101,7 @@ const SignupForm = ({ rawData }) => {
                   className="w-full rounded-md bg-input border border-[#BEBEBE] h-[40px] p-[0.75rem]"
                   value={firstName}
                   type="text"
+                  required
                 />
               </div>
               <div className="w-full">
@@ -169,6 +112,7 @@ const SignupForm = ({ rawData }) => {
                   className="w-full rounded-md bg-input border border-[#BEBEBE] h-[40px] p-[0.75rem]"
                   value={lastName}
                   type="text"
+                  required
                 />
               </div>
               <div>
@@ -179,6 +123,7 @@ const SignupForm = ({ rawData }) => {
                   className="w-full rounded-md bg-input border border-[#BEBEBE] h-[40px] p-[0.75rem]"
                   value={email}
                   type="text"
+                  required
                 />
               </div>
               <div>
@@ -189,11 +134,12 @@ const SignupForm = ({ rawData }) => {
                   className="w-full rounded-md bg-input border border-[#BEBEBE] h-[40px] p-[0.75rem]"
                   value={phoneNumber}
                   type="text"
+                  required
                 />
               </div>
             </div>
           </div>
-          <div>
+          <div className="mt-4">
             <label htmlFor="password">Password</label>
             <input
               id="password"
@@ -201,40 +147,46 @@ const SignupForm = ({ rawData }) => {
               className="w-full rounded-md bg-input border border-[#BEBEBE] h-[40px] p-[0.75rem]"
               value={password}
               type="password"
+              min={6}
+              required
             />
           </div>
-          <div className="flex justify-between items-center my-[0.62rem]">
-            <div className="flex gap-1 items-center">
-              <img
-                src="public/checkmark.svg"
-                alt=""
-              />
-              <p>
-                I agree to all the
-                <a
-                  href=""
-                  className="text-primary cursor-pointer"
-                >
-                  Terms and Privacy Policies.
-                </a>
-              </p>
-            </div>
+          <div className="flex justify-start items-center my-[0.62rem]">
+            <Checkbox
+              className="-translate-x-3"
+              sx={{
+                "&.Mui-checked": {
+                  color: "#52D3D8", // Color when checked
+                },
+              }}
+              checked={isTermsChecked}
+              onChange={handleTermsChange}
+            />{" "}
+            <p className="-translate-x-3">
+              I agree to all the
+              <Link
+                href="/privacy_policy"
+                className="text-primary cursor-pointer"
+              >
+                Terms and Privacy Policies.
+              </Link>
+            </p>
           </div>
           <div className="flex gap-2 pb-2">
             Are you an agent?
-            <a
-              href="agent_signUp.html"
+            <Link
+              href="/sign_up/agent"
               className="cursor-pointer text-primary"
             >
               Click here
-            </a>
+            </Link>
           </div>
           <button
             className="w-full bg-primary text-white h-[3.12rem] rounded-md"
             type="submit"
-            disabled={isLoading}
+            disabled={isLoading || !isTermsChecked}
           >
-            {isLoading ? "Loading..." : "Send"}
+            {isLoading ? <CircularProgress /> : "Submit"}
           </button>
         </form>
       </div>

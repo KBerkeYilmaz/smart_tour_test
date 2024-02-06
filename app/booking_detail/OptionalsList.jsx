@@ -1,5 +1,5 @@
 import Checkbox from "@mui/material/Checkbox";
-import tourData from "../../dummy_tour_id.json";
+import tourData from "../../../dummy_tour_id.json";
 
 const OptionalsList = ({ special, price, currency }) => {
   return (

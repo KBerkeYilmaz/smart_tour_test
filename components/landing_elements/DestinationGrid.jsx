@@ -8,8 +8,7 @@ const DestinationGrid = () => {
     >
       <div className="flex justify-center md:justify-start items-center w-full">
         <h2 className="heading2 text-center px-0.5 tablet:px-0 w-full">
-          Where would you like to travel
-
+          Where do you want to visit?
         </h2>
       </div>
       <div

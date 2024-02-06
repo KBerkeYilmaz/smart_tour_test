@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import NavbarAvatarMenu from "./NavbarAvatarMenu";
 
 const Navbar = () => {
-
+  const { data: session } = useSession();
 
   return (
     <nav className="flex flex-col w-screen max-w-screen justify-start items-center">
@@ -46,18 +50,24 @@ const Navbar = () => {
           </div>
         </div>
         <div className="nav-signup-btn-wrapper w-1/2 flex justify-end items-center text-white text-xs">
-          <h5
-            className="px-[0.563rem]"
-            role="button"
-          >
-            <Link href="/sign_up">Sign up</Link>
-          </h5>
-          <h5
-            className="px-[0.563rem]"
-            role="button"
-          >
-            <Link href="/sign_up">Login</Link>
-          </h5>
+          {!session ? (
+            <>
+              <h5
+                className="px-[0.563rem]"
+                role="button"
+              >
+                <Link href="/sign_up">Signup</Link>
+              </h5>
+              <h5
+                className="px-[0.563rem]"
+                role="button"
+              >
+                <Link href="/sign_in">Signin</Link>
+              </h5>
+            </>
+          ) : (
+            <NavbarAvatarMenu /> // Your avatar component
+          )}
         </div>
       </section>
 
@@ -86,7 +96,7 @@ const Navbar = () => {
               className="flex items-center gap-2 h-full w-full"
               role="button"
             >
-              <span>Circuitos</span>
+                <a href="tour_list">Curcitos</a>
               <img
                 src="/chevron-up-solid.svg"
                 alt=""
@@ -283,7 +293,7 @@ const Navbar = () => {
               className="flex items-center gap-2 h-full w-full"
               role="button"
             >
-              <Link href="/tour_list#list-main-section" >Blog</Link>
+              <Link href={`/tour_list#list-main-section`}>Blog</Link>
             </div>
           </div>
           <div
@@ -308,8 +318,6 @@ const Navbar = () => {
               <a href="tour_list.html">Contacto</a>
             </div>
           </div>
-
-
         </div>
       </section>
     </nav>

@@ -1,9 +1,21 @@
+import "../globals.css";
+import RatingBar from "@components/ui/RatingBar";
+
+const premade_filters = [
+  { text: "Most Popular", value: 5, isActive: true },
+  { text: "New", value: 3, isActive: false },
+  { text: "Shorter Duration", value: 9, isActive: false },
+  { text: "Longer Duration", value: 13, isActive: false },
+  { text: "Cheapest First", value: 531, isActive: false },
+  { text: "Most expensive", value: 131, isActive: false },
+];
+
 const PackageFilterItems = () => {
   return (
     <>
       <div
         id="filter-bar"
-        className="filter-bar fixed w-3/5 md:w-2/5 h-screen z-50 bg-white top-0 left-0 flex flex-col justify-start items-center py-2 px-6 text-[#200E3A] desktop:hidden"
+        className="filter-bar fixed w-3/5 md:w-2/5 h-screen z-50 bg-white top-0 left-0 flex flex-col justify-start items-center py-2 px-6 text-[#200E3A] font-lato lg:hidden"
       >
         <button
           className="absolute right-4 top-2"
@@ -16,7 +28,7 @@ const PackageFilterItems = () => {
           />
         </button>
         <div className="flex flex-col w-full justify-start items-start">
-          <h1 className="text-[16px] font-bold text-[#200E3A] font-[lato] pb-2 ">
+          <h1 className="text-[16px] font-normal text-[#200E3A] pb-2 ">
             Filter For You
           </h1>
           <ul
@@ -31,14 +43,23 @@ const PackageFilterItems = () => {
         className="filter-bar-desktop sticky w-3/5 md:w-2/5 max-h-[100vh] z-50 bg-white top-0 left-0 flex-col justify-start items-center py-2 px-6 text-[#200E3A] gap-4 font-lato shrink hidden desktop:flex"
       >
         <div className="flex flex-col w-full justify-start items-start">
-          <h2 className="text-[16px] font-bold text-[#200E3A] font-lato pb-2">
+          <h2 className="text-[16px] font-semibold text-[#200E3A] font-lato pb-2">
             Filter For You
           </h2>
-
           <ul
             className="text-[#4A4A4A] text-[12px] font-medium flex flex-col gap-1.5"
             id="filter-list-tags1"
-          ></ul>
+          >
+            {premade_filters.map((filter, index) => (
+              <li
+                key={index}
+                className="flex justify-between items-center"
+              >
+                <span>{filter.text}</span> <span>{filter.value}</span>{" "}
+                <input type="checkbox" />
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="flex flex-col w-full justify-start items-start">
@@ -62,7 +83,7 @@ const PackageFilterItems = () => {
 
               <button className="bg-primary p-2">
                 <img
-                  src="public/chevron-right.svg"
+                  src="chevron-right.svg"
                   alt=""
                   className="w-6 rounded-[6px]"
                 />
@@ -93,7 +114,7 @@ const PackageFilterItems = () => {
 
               <button className="bg-primary p-2">
                 <img
-                  src="public/chevron-right.svg"
+                  src="chevron-right.svg"
                   alt=""
                   className="w-6 rounded-[6px]"
                 />
@@ -101,6 +122,38 @@ const PackageFilterItems = () => {
             </div>
           </form>
         </div>
+        <div className="flex flex-col w-full justify-start items-start">
+          <form action="">
+            <h2 className="text-[16px] font-bold text-[#200E3A] font-lato pb-2">
+              Price Range
+            </h2>
+
+            <div className="flex justify-start items-center gap-4 w-full">
+              <input
+                type="date"
+                placeholder="Start"
+                className="pl-1 border-2 border-primary rounded-[5px] py-2 max-w-32"
+                min="0"
+              />
+              <span> to </span>
+              <input
+                type="date"
+                placeholder="Finish"
+                className="pl-1 border-2 border-primary rounded-[5px] py-2 max-w-32"
+                min="0"
+              />
+
+              <button className="bg-primary p-2">
+                <img
+                  src="chevron-right.svg"
+                  alt=""
+                  className="w-6 rounded-[6px]"
+                />
+              </button>
+            </div>
+          </form>
+        </div>
+
         <div className="flex flex-col w-full justify-start items-start">
           <form action="">
             <h2 className="text-[16px] font-bold text-[#200E3A] font-lato pb-2">
@@ -140,6 +193,17 @@ const PackageFilterItems = () => {
             className="text-[#4A4A4A] text-[12px] font-medium flex flex-col gap-1.5"
             id="filter-list-tags2"
           ></ul>
+        </div>
+        <div className="flex flex-col w-full justify-start items-start">
+          <h2 className="text-[16px] font-bold text-[#200E3A] font-lato pb-2">
+            Rating
+          </h2>
+          <RatingBar />
+        </div>
+        <div className="flex flex-col w-full justify-start items-start">
+          <h2 className="text-[16px] font-bold text-[#200E3A] font-lato pb-2">
+            Rating
+          </h2>
         </div>
       </div>
     </>

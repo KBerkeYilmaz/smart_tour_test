@@ -26,7 +26,7 @@ const GuestDetails = () => {
                   id="customer_title_not_specified"
                   className="w-full rounded-md bg-input border border-[#BEBEBE] h-[40px] p-[0.75rem]"
                 >
-                  Don&apos;t want to specify
+                  Don't want to specify
                 </option>
               </select>
             </div>

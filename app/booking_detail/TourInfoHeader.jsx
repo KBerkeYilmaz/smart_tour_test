@@ -1,4 +1,4 @@
-import tourData from "../../dummy_tour_id.json";
+import tourData from "../../../dummy_tour_id.json";
 
 
 
