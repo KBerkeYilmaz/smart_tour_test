@@ -1,11 +1,13 @@
 import OptionalsList from "./OptionalsList";
 import InsuranceList from "./InsuranceList";
-import tourData from "../../../dummy_tour_id.json";
 
 const PersonalizeOptions = () => {
   return (
     <>
-      {tourData.tour_specials.map((item, index) => {
+      <div>
+        <h1>Personalized Options</h1>
+      </div>
+      {/* {tourData.tour_specials.map((item, index) => {
         return (
           <OptionalsList
             key={index}
@@ -15,7 +17,7 @@ const PersonalizeOptions = () => {
           />
         );
       })}
-      <InsuranceList />
+      <InsuranceList /> */}
     </>
   );
 };
