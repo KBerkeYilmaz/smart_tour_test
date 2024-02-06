@@ -96,7 +96,7 @@ const Navbar = () => {
               className="flex items-center gap-2 h-full w-full"
               role="button"
             >
-                <a href="tour_list">Curcitos</a>
+                <Link href="tour_list">Curcitos</Link>
               <img
                 src="/chevron-up-solid.svg"
                 alt=""
