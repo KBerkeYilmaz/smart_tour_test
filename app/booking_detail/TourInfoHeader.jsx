@@ -1,4 +1,3 @@
-import tourData from "../../../dummy_tour_id.json";
 
 
 
@@ -18,13 +17,12 @@ const TourInfoHeader = () => {
           className="text-[1.5rem] font-semibold font-lato"
           id="booking-info-title"
         >
-          {tourData.tour_title}
+          
         </h1>
         <span
           className="text-[13px] flex justify-end text-slate-400"
           id="booking-info-sub-title"
         >
-          {tourData.tour_location}
         </span>
       </div>
     </div>

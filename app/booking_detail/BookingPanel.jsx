@@ -3,10 +3,10 @@ import { useState } from "react";
 import Stepper from "@components/ui/Stepper";
 import SpecialRequest from "./SpecialRequests";
 import GuestDetails from "./GuestDetails";
-import LoginForm from "@components/forms/LoginForm";
 import PersonalizeOptions from "./PersonalizeOptions";
 import TourInfoHeader from "./TourInfoHeader";
 import TourInfoSub from "./TourInfoSub";
+import SigninForm from "@components/forms/SigninForm";
 
 const BookingDetail = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -15,7 +15,7 @@ const BookingDetail = () => {
     <PersonalizeOptions key={0} />,
     <SpecialRequest key={1} />,
     <GuestDetails key={2} />,
-    <LoginForm key={3} />,
+    <SigninForm key={3} />,
   ];
 
   return (

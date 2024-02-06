@@ -1,5 +1,4 @@
 import Checkbox from "@mui/material/Checkbox";
-import tourData from "../../../dummy_tour_id.json";
 
 const OptionalsList = ({ special, price, currency }) => {
   return (
@@ -9,11 +8,11 @@ const OptionalsList = ({ special, price, currency }) => {
           className="font-semibold text-[#4A4A4A] text-lg pl-2"
           id="tour-info-room-details-title"
         >
-          {special}
+          {/* {special} */}
         </h5>
         <h6 className="text-sm text-slate-400 pl-2">
           <span className="font-semibold tracking-wide">
-            {price} {`${currency}s`}
+            {/* {price} {`${currency}s`} */}
           </span>
           per Person
         </h6>
